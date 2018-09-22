@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:py="http://genshi.edgewall.org/">
+<head>
+	<title>${section.title}</title>
+	<meta charset="utf-8"/>  
+	<style type="text/css">
+		div, img {
+		border: 0;
+		margin: 0;
+		padding: 0;
+		}
+	</style>
+</head>
+<body>
+  <h1>${section.title}</h1>
+  <py:for each="paragraph in section.text">
+  
+    <py:choose test="type(paragraph)">
+    <py:when test="type({})">
+		<div><img src="img/${paragraph.img_dst}" alt = "img/${paragraph.img_dst}"/>${paragraph.comment}</div>
+	</py:when>
+    <py:otherwise><p>$paragraph</p></py:otherwise>
+    </py:choose>
+  
+  </py:for>
+</body>
+</html>
